@@ -185,6 +185,7 @@ class IrrigationSystem {
       int humidity = analogRead(humidity_sensor_pin);
       DynamicJsonDocument doc(256);
       doc["state"]["reported"]["humedad"] = humidity;
+      doc["state"]["reported"]["limite_humedad"] = 1300;
       String output;
       serializeJson(doc, output);
       mqtt_client.publish(shadow_update_topic, output.c_str());
